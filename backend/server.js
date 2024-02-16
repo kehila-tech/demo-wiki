@@ -12,6 +12,7 @@ app.get('/api/hello', async (req, res) => {
 
 const pages = new Map();
 pages.set('עמוד', 'זהו תוכן של עמוד');
+pages.set('ראשי', 'זהו העמוד הראשי');
 
 app.get('/api/page/get/:id', async (req, res) => {
   const content = pages.get(req.params.id);
@@ -23,7 +24,12 @@ app.get('/api/page/get/:id', async (req, res) => {
 })
 
 app.post('/api/page/set/:id', async (req, res) => {
-  pages.set(req.params.id, req.body.content);
+  const id = req.params.id;
+  const content = req.body.content;
+  console.log(`Setting value of ${id} to ${content}`);
+  console.log(req.body);
+  pages.set(id, content);
+  res.send("נשמר");
 })
 
 app.listen(port, () => {
