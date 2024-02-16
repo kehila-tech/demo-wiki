@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect } from "react";
 
 function App() {
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState('טוען...');
 
   useEffect(() => {
     const async_impl = async () => {
